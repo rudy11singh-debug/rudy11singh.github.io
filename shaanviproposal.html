@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Shaanvi 💗</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <style>
+        :root {
+            --pink-light: #ffeef2;
+            --pink-medium: #ffb7c5;
+            --pink-dark: #ff4d6d;
+            --rose-gold: #b76e79;
+            --glass: rgba(255, 255, 255, 0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(135deg, #ffeef2 0%, #ffcad4 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            cursor: none; 
+        }
+
+        #cursor {
+            width: 20px;
+            height: 20px;
+            background: var(--pink-dark);
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 0 15px var(--pink-dark);
+            transform: translate(-50%, -50%);
+        }
+
+        .floating-heart {
+            position: fixed;
+            color: rgba(255, 77, 109, 0.3);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        #hero {
+            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,238,242,1) 100%);
+        }
+
+        .hero-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--pink-dark);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-open {
+            padding: 15px 40px;
+            background: white;
+            border: 2px solid var(--pink-medium);
+            color: var(--pink-dark);
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .btn-open:hover {
+            transform: scale(1.05);
+            background: var(--pink-light);
+        }
+
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .card {
+            width: 250px;
+            height: 350px;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            text-align: center;
+            color: var(--pink-dark);
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background: white;
+        }
+
+        #proposal-box {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(255, 77, 109, 0.2);
+            text-align: center;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            position: relative;
+            min-height: 60px;
+        }
+
+        #yesBtn {
+            background: var(--pink-dark);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        #noBtn {
+            background: #adb5bd;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        #secretLetter {
+            margin-top: 100px;
+            font-style: italic;
+            color: var(--rose-gold);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+
+    <section id="hero">
+        <h1 class="hero-text" id="typewriter"></h1>
+        <button class="btn-open" onclick="startSurprise()">Open Your Surprise 💌</button>
+    </section>
+
+    <section id="reasons" class="hidden">
+        <h2 class="hero-text" style="font-size: 2rem;">Why You Are My Everything...</h2>
+        <div class="card-container">
+            <div class="card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">Why You? ✨</div>
+                    <div class="card-back">Because you make my life so much better you make me a better man my love. </div>
+                </div>
+            </div>
+            <div class="card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">Your Smile ✨</div>
+                    <div class="card-back">Because your smile is everything I ever asked for. 😊</div>
+                </div>
+            </div>
+            <div class="card" onclick="flipCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">The World ✨</div>
+                    <div class="card-back">Because my world begins and ends with you. 🌍</div>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 50px; color: var(--rose-gold);">Scroll Down Princess...</p>
+    </section>
+
+    <section id="proposal" class="hidden">
+        <div id="proposal-box">
+            <h2 class="hero-text" style="font-size: 2.5rem;">Shaanvi... My Princess...</h2>
+            <h3 style="color: var(--rose-gold); margin-bottom: 20px;">Will you be my Valentine?</h3>
+            <div class="btn-group">
+                <button id="yesBtn" onclick="accepted()">💖 YES</button>
+                <button id="noBtn" onmouseover="moveNo()">🙈 NO</button>
+            </div>
+        </div>
+        <p id="secretLetter" onclick="alert('My dearest Shaanvi, you are my Chiya, my Vibaby, and my whole heart. Every second with you feels like a fairytale. I love you forever.')">Click for a secret letter 💌</p>
+    </section>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        const lines = ["For My Princess Shaanvi 💗", "My Chiya.", "My Vibaby.", "Mera Rasgulla."];
+        let lineIdx = 0;
+        let charIdx = 0;
+        const speed = 100;
+
+        function typeWriter() {
+            if (lineIdx < lines.length) {
+                if (charIdx < lines[lineIdx].length) {
+                    document.getElementById("typewriter").innerHTML += lines[lineIdx].charAt(charIdx);
+                    charIdx++;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    setTimeout(() => {
+                        document.getElementById("typewriter").innerHTML = "";
+                        charIdx = 0;
+                        lineIdx++;
+                        typeWriter();
+                    }, 1500);
+                }
+            } else {
+                lineIdx = 0; typeWriter();
+            }
+        }
+        typeWriter();
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            document.body.appendChild(heart);
+
+            gsap.to(heart, {
+                y: '-110vh',
+                x: (Math.random() - 0.5) * 200,
+                duration: 5 + Math.random() * 5,
+                ease: "power1.out",
+                onComplete: () => heart.remove()
+            });
+        }
+        setInterval(createHeart, 800);
+
+        function startSurprise() {
+            gsap.to("#hero", {opacity: 0, duration: 1, onComplete: () => {
+                document.getElementById('hero').classList.add('hidden');
+                document.getElementById('reasons').classList.remove('hidden');
+                document.getElementById('proposal').classList.remove('hidden');
+                window.scrollTo({top: window.innerHeight, behavior: 'smooth'});
+            }});
+        }
+
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        let noCount = 0;
+        const prompts = ["Try again, wrong answer 😌", "Think again, Princess 💗", "Are you sure, Chiya? 🥺", "System error... only YES works!"];
+        
+        function moveNo() {
+            noCount++;
+            const btn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+
+            let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (currentSize + 5) + 'px';
+            yesBtn.style.padding = (parseFloat(window.getComputedStyle(yesBtn).padding) + 2) + 'px';
+
+            if(noCount % 2 === 0) {
+                alert(prompts[Math.floor(Math.random()*prompts.length)]);
+            }
+        }
+
+        function accepted() {
+            document.body.innerHTML = `
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; background:#ffc8dd; text-align:center; cursor: default;">
+                    <h1 class="hero-text">You just made me the happiest man alive! ❤️</h1>
+                    <p class="hero-text" style="font-size:1.5rem">I love you forever, Shaanvi.</p>
+                    <p class="hero-text" style="font-size:1.2rem">Happy Valentine's Day, Vibaby 💗</p>
+                    <div style="font-size:5rem">💍🌸</div>
+                </div>
+            `;
+            // Re-enable default cursor on the final screen for readability
+            document.body.style.cursor = 'default';
+            for(let i=0; i<100; i++) setTimeout(createHeart, i*100);
+        }
+
+        let input = "";
+        document.addEventListener('keydown', (e) => {
+            input += e.key;
+            if(input.includes("chiya")) {
+                alert("🌸 Secret Message: You are my favorite person in every universe.");
+                input = "";
+            }
+        });
+    </script>
+</body>
+</html>
